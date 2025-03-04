@@ -1,0 +1,76 @@
+:root {
+  font-family: Helvetica;
+  color: #000000;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:visited {
+  color: #646cff;
+}
+a:hover {
+  color: #a4acff;
+}
+a:hover:visited {
+  color: #a4acff;
+}
+
+body {
+  font-size: 14px;
+  margin: 0px;
+  padding: 10px;
+  overflow-x: hidden;
+  text-align: justify;
+}
+
+div {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #000000;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+  margin-right: 4px;
+}
+
+.page {
+  width: 21cm;
+  height: 29.7cm;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 2cm;
+  margin: 1cm;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body {
+    background: none;
+  }
+  .page {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    padding: 0;
+    margin: 0px;
+  }
+}
