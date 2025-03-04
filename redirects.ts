@@ -11,7 +11,15 @@ const urls = [
 export const closeBundle = () => {
   const lastmod = new Date().toISOString().split("T")[0];
 
-  writeFileSync("dist/.htaccess", [...urls.map(_ => `Redirect 301 /${_} http://www.trinityteam.it/DanieleRicci`), ""].join("\n"));
+  writeFileSync(
+    "dist/.htaccess",
+    `\
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !^/DanieleRicci$
+
+${[...urls.map(_ => `RewriteRule ^${_}$ http://www.trinityteam.it/DanieleRicci [R=301,L]`), ""].join("\n")}`
+  );
 
   writeFileSync(
     "dist/sitemap.xml",
