@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from "react";
+import { Fragment, ReactElement, useEffect } from "react";
 
 const links: { favicon: string; link: string }[] = [
   { favicon: "https://www.linkedin.com/favicon.ico", link: "https://www.linkedin.com/in/daniele-icc/" },
@@ -43,7 +43,7 @@ const secondarySkills: string[] = [
   "UDP"
 ];
 
-const experiences: { title: string; company: string; from: Date; to: Date; content: ReactElement; last?: boolean }[] = [
+const experiences: { title: string; company: string; from: Date; to?: Date; content: ReactElement; last?: boolean }[] = [
   {
     company: "IOHK Inc",
     content: (
@@ -55,8 +55,7 @@ const experiences: { title: string; company: string; from: Date; to: Date; conte
       </>
     ),
     from:  new Date("2022-05"),
-    title: "Senior Back-end Software Engineer",
-    to:    new Date("2025-01")
+    title: "Senior Back-end Software Engineer"
   },
   {
     company: "TlmPartners Inc",
@@ -175,11 +174,11 @@ const Skills = ({ main, skills }: { main?: boolean; skills: string[] }) => (
     <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>{main ? "MAIN" : "SECONDARY"} SKILLS</span>
     <hr />
     <span style={{ fontSize: "1.2em", fontWeight: "bold", lineHeight: 1.5 }}>
-      {skills.map(skill => (
-        <>
+      {skills.map((skill, i) => (
+        <Fragment key={i}>
           {skill}
           <br />
-        </>
+        </Fragment>
       ))}
     </span>
   </>
@@ -192,6 +191,11 @@ const App = () => {
     document.querySelectorAll("a").forEach(link => {
       link.setAttribute("target", "_blank");
     });
+
+    const url = "https://www.trinityteam.it/DanieleRicci";
+    const { href } = window.location;
+
+    if(href !== url && ! /^http:\/\/localhost/.exec(href)) setTimeout(() => (window.location.href = url), 2000);
   }, []);
 
   return (
@@ -298,18 +302,22 @@ const App = () => {
       <div className="page" style={{ pageBreakAfter: "always" }}>
         <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>PROFESSIONAL EXPERIENCE</span>
         <hr style={{ marginRight: 20 }} />
-        {experiences.map(({ from, to, title, company, content, last }) => (
-          <div key={company}>
-            <span style={{ fontSize: "1.3em" }}>{title}</span>
-            {" - "}
-            <span style={{ fontSize: "1.2em", fontWeight: "bold" }}>{company}</span>
-            <br />
-            <i>{`${printDate(from)} - ${printDate(to)}`}</i>
-            <br />
-            {content}
-            {last ? null : <hr style={{ borderTop: "1px dotted #808080", margin: 9, marginLeft: 40, marginRight: 50 }} />}
-          </div>
-        ))}
+        {experiences.map(({ from, to, title, company, content, last }, id) => {
+          if(! to && id !== 0) throw new Error(`Missing end date for experience: ${company}`);
+
+          return (
+            <div key={company}>
+              <span style={{ fontSize: "1.3em" }}>{title}</span>
+              {" - "}
+              <span style={{ fontSize: "1.2em", fontWeight: "bold" }}>{company}</span>
+              <br />
+              <i>{`${printDate(from)} - ${to ? printDate(to) : "Today"}`}</i>
+              <br />
+              {content}
+              {last ? null : <hr style={{ borderTop: "1px dotted #808080", margin: 9, marginLeft: 40, marginRight: 50 }} />}
+            </div>
+          );
+        })}
       </div>
     </>
   );
