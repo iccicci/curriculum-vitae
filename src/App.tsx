@@ -1,7 +1,8 @@
-import { Fragment, ReactElement, useEffect } from "react";
+import type { ReactElement } from "react";
+import { Fragment, useEffect } from "react";
 
 const links: { favicon: string; link: string }[] = [
-  { favicon: "https://www.linkedin.com/favicon.ico", link: "https://www.linkedin.com/in/daniele-icc/" },
+  { favicon: "li.ico", link: "https://www.linkedin.com/in/daniele-icc/" },
   { favicon: "https://github.com/favicon.ico", link: "https://github.com/iccicci" },
   { favicon: "https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico", link: "https://stackoverflow.com/users/4690946/daniele-ricci" }
 ];
@@ -169,20 +170,16 @@ const experiences: { title: string; company: string; from: Date; to?: Date; cont
   }
 ];
 
-const Skills = ({ main, skills }: { main?: boolean; skills: string[] }) => (
-  <>
-    <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>{main ? "MAIN" : "SECONDARY"} SKILLS</span>
-    <hr />
-    <span style={{ fontSize: "1.2em", fontWeight: "bold", lineHeight: 1.5 }}>
-      {skills.map((skill, i) => (
-        <Fragment key={i}>
-          {skill}
-          <br />
-        </Fragment>
-      ))}
-    </span>
-  </>
-);
+const Skills = ({ main, skills }: { main?: boolean; skills: string[] }) => <>
+  <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>{main ? "MAIN" : "SECONDARY"} SKILLS</span>
+  <hr />
+  <span style={{ fontSize: "1.2em", fontWeight: "bold", lineHeight: 1.5 }}>
+    {skills.map((skill, i) => <Fragment key={i}>
+      {skill}
+      <br />
+    </Fragment>)}
+  </span>
+</>;
 
 const printDate = (date: Date) => date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 
@@ -198,129 +195,126 @@ const App = () => {
     if(href !== url && ! /^http:\/\/localhost/.exec(href)) setTimeout(() => (window.location.href = url), 2000);
   }, []);
 
-  return (
-    <>
-      <div className="page" style={{ pageBreakAfter: "always" }}>
-        <div style={{ paddingBottom: 10 }}>
-          <span style={{ fontSize: "2.5em", fontWeight: "bold" }}>CURRICULUM VITÆ Daniele Ricci</span>
+  return <>
+    <div className="page" style={{ pageBreakAfter: "always" }}>
+      <div style={{ paddingBottom: 10 }}>
+        <span style={{ fontSize: "2.5em", fontWeight: "bold" }}>CURRICULUM VITÆ Daniele Ricci</span>
+        <br />
+        <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>Lead Full-Stack Developer | 30 Years of Experience | Crypto Enthusiast</span>
+      </div>
+      <div>
+        <div style={{ display: "inline-block", verticalAlign: "top", width: "45%" }}>
+          <img src="at.png" className="icon" />
+          <a href="mailto:daniele.icc@gmail.com">daniele.icc@gmail.com</a>
           <br />
-          <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>Lead Full-Stack Developer | 30 Years of Experience | Crypto Enthusiast</span>
-        </div>
-        <div>
-          <div style={{ display: "inline-block", verticalAlign: "top", width: "45%" }}>
-            <img src="at.png" className="icon" />
-            <a href="mailto:daniele.icc@gmail.com">daniele.icc@gmail.com</a>
-            <br />
-            <img src="marker.png" className="icon" />
+          <img src="marker.png" className="icon" />
             Loc. Arnetolo 9/A 50066 Reggello (FI)
-            <br />
-            <img src="empty.png" className="icon" />
+          <br />
+          <img src="empty.png" className="icon" />
             Florence, IT
-          </div>
-          <div style={{ display: "inline-block", verticalAlign: "top", width: "55%" }}>
-            {links.map(({ favicon, link }, id) => (
-              <div key={id}>
-                <img src={favicon} className="icon" />
-                <a href={link}>{link}</a>
-              </div>
-            ))}
-          </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <div>
-          <div style={{ display: "inline-block", paddingRight: 20, verticalAlign: "top", width: "69%" }}>
-            <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>SUMMARY</span>
-            <hr />
+        <div style={{ display: "inline-block", verticalAlign: "top", width: "55%" }}>
+          {links.map(({ favicon, link }, id) => <div key={id}>
+            <img src={favicon} className="icon" />
+            <a href={link}>{link}</a>
+          </div>)}
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <div>
+        <div style={{ display: "inline-block", paddingRight: 20, verticalAlign: "top", width: "69%" }}>
+          <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>SUMMARY</span>
+          <hr />
             Seasoned full-stack developer with 30 years of experience building high-performance, scalable applications. Passionate about blockchain
             and cryptocurrencies, with a sharp eye for cost optimization both in development and long-term maintenance. Firm believer in the{" "}
-            <b>RERO (Release Early, Release Often)</b> philosophy, ensuring rapid iteration and continuous improvement. Detail-oriented problem solver
+          <b>RERO (Release Early, Release Often)</b> philosophy, ensuring rapid iteration and continuous improvement. Detail-oriented problem solver
             who thrives on delivering robust, maintainable solutions that drive efficiency and innovation.
-            <br />
-            <br />
-            <br />
-            <br />
-            <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>EDUCATION</span>
-            <hr />
-            <span style={{ fontSize: "1.3em" }}>Diploma di Perito Industriale Capotecnico Informatico</span>
-            <br />
-            <span style={{ fontSize: "1.2em" }}>(Technical High School Diploma – Industrial Informatics Specialist)</span>
-            <br />
-            <span style={{ fontSize: "1.1em" }}>1995 - I.T.I.S. Antonio Meucci - Florence, IT</span>
-            <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>EDUCATION</span>
+          <hr />
+          <span style={{ fontSize: "1.3em" }}>Diploma di Perito Industriale Capotecnico Informatico</span>
+          <br />
+          <span style={{ fontSize: "1.2em" }}>(Technical High School Diploma – Industrial Informatics Specialist)</span>
+          <br />
+          <span style={{ fontSize: "1.1em" }}>1995 - I.T.I.S. Antonio Meucci - Florence, IT</span>
+          <br />
             Achieved highest grade in Computer Science.
-            <br />
-            <br />
-            <br />
-            <br />
-            <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>LANGUAGES</span>
-            <hr />
-            <ul>
-              <li>
-                <b>Italian</b> - Native Speaker
-              </li>
-              <li>
-                <b>English</b> - Advanced (technical discussions: C1/C2, general conversation: B2)
-              </li>
-            </ul>
-            <br />
-            <br />
-            <br />
-            <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>PUBLICATIONS & PROJECTS</span>
-            <hr />
-            <ul>
-              <li>
+          <br />
+          <br />
+          <br />
+          <br />
+          <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>LANGUAGES</span>
+          <hr />
+          <ul>
+            <li>
+              <b>Italian</b> - Native Speaker
+            </li>
+            <li>
+              <b>English</b> - Advanced (technical discussions: C1/C2, general conversation: B2)
+            </li>
+          </ul>
+          <br />
+          <br />
+          <br />
+          <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>PUBLICATIONS & PROJECTS</span>
+          <hr />
+          <ul>
+            <li>
                 I have contributed to the open-source community of <b>Node.js</b>, publishing several modules. The most notable is{" "}
-                <a href="https://github.com/iccicci/rotating-file-stream#readme">rotating-file-stream</a>, with <b>50K+ downloads per week</b>,
+              <a href="https://github.com/iccicci/rotating-file-stream#readme">rotating-file-stream</a>, with <b>100K+ downloads per week</b>,
                 officially recommended by <a href="https://www.npmjs.com/package/morgan#log-file-rotation">morgan</a>, the logging middleware for{" "}
-                <a href="https://expressjs.com/">Express</a>.
-              </li>
-              <li>
+              <a href="https://expressjs.com/">Express</a>.
+            </li>
+            <li>
                 My passion for video games led me to contribute to the development of <b>EsentarArena</b>, a game built in <b>C++</b> with the{" "}
-                <a href="https://developer.valvesoftware.com/wiki/Source">Source Engine</a>. Although the project was never commercialized due to a
+              <a href="https://developer.valvesoftware.com/wiki/Source">Source Engine</a>. Although the project was never commercialized due to a
                 lack of investors, it provided me with invaluable experience in <b>real-time network applications</b>. Here is available a{" "}
-                <a href="https://www.youtube.com/watch?v=bX9IkGK3izY">demo video</a>.
-              </li>
-            </ul>
-            <br />
-            <br />
-            <br />
-            <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>HOBBIES & INTERESTS</span>
-            <hr />
+              <a href="https://www.youtube.com/watch?v=bX9IkGK3izY">demo video</a>.
+            </li>
+            <li>
+                Member of <a href="https://www.mensa.org/">Mensa International</a>.
+            </li>
+          </ul>
+          <br />
+          <br />
+          <br />
+          <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>HOBBIES & INTERESTS</span>
+          <hr />
             Passionate about martial arts, role-playing games, video games, film production, and theater acting.
-            <br />I served as <b>Production Director</b> for the film <a href="https://www.imdb.com/title/tt1874387/">10 ragazze</a>, gaining valuable
+          <br />I served as <b>Production Director</b> for the film <a href="https://www.imdb.com/title/tt1874387/">10 ragazze</a>, gaining valuable
             experience in project management and team coordination also within the creative industry.
-          </div>
-          <div style={{ display: "inline-block", verticalAlign: "top", width: "28%" }}>
-            <Skills main skills={mainSkills} />
-            <br />
-            <Skills skills={secondarySkills} />
-          </div>
+        </div>
+        <div style={{ display: "inline-block", verticalAlign: "top", width: "28%" }}>
+          <Skills main skills={mainSkills} />
+          <br />
+          <Skills skills={secondarySkills} />
         </div>
       </div>
-      <div className="page" style={{ pageBreakAfter: "always" }}>
-        <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>PROFESSIONAL EXPERIENCE</span>
-        <hr style={{ marginRight: 20 }} />
-        {experiences.map(({ from, to, title, company, content, last }, id) => {
-          if(! to && id !== 0) throw new Error(`Missing end date for experience: ${company}`);
+    </div>
+    <div className="page" style={{ pageBreakAfter: "always" }}>
+      <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>PROFESSIONAL EXPERIENCE</span>
+      <hr style={{ marginRight: 20 }} />
+      {experiences.map(({ from, to, title, company, content, last }, id) => {
+        if(! to && id !== 0) throw new Error(`Missing end date for experience: ${company}`);
 
-          return (
-            <div key={company}>
-              <span style={{ fontSize: "1.3em" }}>{title}</span>
-              {" - "}
-              <span style={{ fontSize: "1.2em", fontWeight: "bold" }}>{company}</span>
-              <br />
-              <i>{`${printDate(from)} - ${to ? printDate(to) : "Today"}`}</i>
-              <br />
-              {content}
-              {last ? null : <hr style={{ borderTop: "1px dotted #808080", margin: 9, marginLeft: 40, marginRight: 50 }} />}
-            </div>
-          );
-        })}
-      </div>
-    </>
-  );
+        return <div key={company}>
+          <span style={{ fontSize: "1.3em" }}>{title}</span>
+          {" - "}
+          <span style={{ fontSize: "1.2em", fontWeight: "bold" }}>{company}</span>
+          <br />
+          <i>{`${printDate(from)} - ${to ? printDate(to) : "Today"}`}</i>
+          <br />
+          {content}
+          {last ? null : <hr style={{ borderTop: "1px dotted #808080", margin: 9, marginLeft: 40, marginRight: 50 }} />}
+        </div>;
+      })}
+    </div>
+  </>;
 };
 
 export default App;
