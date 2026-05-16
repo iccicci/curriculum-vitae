@@ -1,15 +1,13 @@
-// cSpell:ignore linebreak multilines nonwords
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+// cSpell:ignore multilines nonwords
 
 import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
 import { defineConfig } from "eslint/config";
-import importPlugin from "eslint-plugin-import";
+import perfectionist from "eslint-plugin-perfectionist";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import sortKeys from "eslint-plugin-sort-keys";
 import globals from "globals";
 import tsEslint from "typescript-eslint";
 
@@ -41,7 +39,7 @@ const catchRule = {
 const quotes = {
   create: context => ({
     Literal: node => {
-      const { value, raw } = node;
+      const { raw, value } = node;
 
       if(typeof value !== "string") return;
 
@@ -141,13 +139,12 @@ export default defineConfig([
     },
     plugins: {
       "@stylistic":         stylistic,
-      import:               importPlugin,
       local,
+      perfectionist,
       react,
       "react-hooks":        reactHooks,
       "react-refresh":      reactRefresh,
-      "simple-import-sort": simpleImportSort,
-      "sort-keys":          sortKeys
+      "simple-import-sort": simpleImportSort
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -176,9 +173,6 @@ export default defineConfig([
       curly:                                                       ["error", "multi-or-nest"],
       eqeqeq:                                                      ["error"],
       "func-style":                                                ["error", "expression", { allowArrowFunctions: true }],
-      "import/first":                                              "error",
-      "import/newline-after-import":                               "error",
-      "import/no-duplicates":                                      "error",
       indent:                                                      ["error", 2],
       "key-spacing":                                               ["error", { align: { afterColon: true, beforeColon: false, on: "value" } }],
       "linebreak-style":                                           ["error", "unix"],
@@ -186,7 +180,9 @@ export default defineConfig([
       "local/smartQuote":                                          "error",
       "max-len":                                                   ["error", { code: 150, ignoreStrings: true }],
       "no-console":                                                "warn",
+      "no-duplicate-imports":                                      ["error", { allowSeparateTypeImports: true }],
       "no-mixed-spaces-and-tabs":                                  ["error", "smart-tabs"],
+      "perfectionist/sort-objects":                                ["error", { order: "asc", type: "alphabetical" }],
       "prefer-const":                                              ["error", { destructuring: "all" }],
       "prefer-template":                                           "error",
       quotes:                                                      ["error", "double"],
@@ -196,10 +192,8 @@ export default defineConfig([
       semi:                                                        ["error", "always"],
       "simple-import-sort/exports":                                "error",
       "simple-import-sort/imports":                                "error",
-      "sort-keys":                                                 "off",
-      "sort-keys/sort-keys-fix":                                   "error",
       "space-unary-ops":                                           ["error", { nonwords: false, overrides: { "!": true }, words: true }]
     },
-    settings: { react: { version: "18.3" } }
+    settings: { react: { version: "19" } }
   }
 ]);

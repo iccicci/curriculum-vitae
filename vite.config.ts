@@ -1,9 +1,9 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-import { closeBundle } from "./redirects";
+import { closeBundle } from "./publish";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), { closeBundle, name: "redirects" }]
+  plugins: [react(), { closeBundle, name: "publish" }]
 });
