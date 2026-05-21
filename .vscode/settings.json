@@ -29,6 +29,7 @@
     "VITÆ",
     "Webservices"
   ],
+  "cSpell.language": "en,it",
   "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint", "source.fixAll.eslint"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.nodePath": "./node_modules/.bin/eslint",
