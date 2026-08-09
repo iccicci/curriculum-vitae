@@ -5,8 +5,6 @@ export const closeBundle = () => {
 
   copyFileSync("google2b74f36928440823.html", "dist/google2b74f36928440823.html");
 
-  writeFileSync("ads.txt", "google.com, pub-5327815068065376, DIRECT, f08c47fec0942fa0");
-
   writeFileSync(
     "dist/.htaccess",
     `\

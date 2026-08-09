@@ -269,7 +269,7 @@ export const CurriculumVitae = () => {
               {", publishing several modules. The most notable is "}
               <a href="https://github.com/iccicci/rotating-file-stream#readme">rotating-file-stream</a>
               {", with "}
-              <b>100K+ downloads per week</b>
+              <b>200K+ downloads per week</b>
               {", officially recommended by "}
               <a href="https://www.npmjs.com/package/morgan#log-file-rotation">morgan</a>
               {", the logging middleware for "}
