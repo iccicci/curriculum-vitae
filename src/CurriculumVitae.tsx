@@ -224,11 +224,17 @@ export const CurriculumVitae = () => {
           <span style={{ fontSize: "1.5em", fontWeight: "bold" }}>SUMMARY</span>
           <hr />
           {
-            "Seasoned full-stack developer with 30 years of experience building high-performance, scalable applications. Passionate about blockchain and cryptocurrencies, with a sharp eye for cost optimization both in development and long-term maintenance. Firm believer in the "
+            "Senior full-stack developer with 30 years of experience engineering high-performance, scalable software systems. I bring a pragmatic, cost-conscious approach to software architecture and development, with particular expertise and interest in blockchain and cryptocurrency technologies."
+          }
+          <br />
+          {
+            "I leverage modern development practices and AI-powered tools to increase productivity, shorten development cycles, and improve code quality. My engineering philosophy emphasizes simplicity, automation, continuous delivery, and "
           }
           <b>RERO (Release Early, Release Often)</b>
+          {" approach to build working software early and refining it through rapid iteration."}
+          <br />
           {
-            " philosophy, ensuring rapid iteration and continuous improvement. Detail-oriented problem solver who thrives on delivering robust, maintainable solutions that drive efficiency and innovation."
+            "I aim to deliver solutions that are not only technically sound, but also efficient to develop, economical to operate, and maintainable for the long term."
           }
           <br />
           <br />
@@ -238,7 +244,7 @@ export const CurriculumVitae = () => {
           <hr />
           <span style={{ fontSize: "1.3em" }}>Diploma di Perito Industriale Capotecnico Informatico</span>
           <br />
-          <span style={{ fontSize: "1.2em" }}>(Technical High School Diploma – Industrial Informatics Specialist)</span>
+          <span style={{ fontSize: "1.2em" }}>(Technical High School Diploma - Industrial Informatics Specialist)</span>
           <br />
           <span style={{ fontSize: "1.1em" }}>1995 - I.T.I.S. Antonio Meucci - Florence, IT</span>
           <br />
