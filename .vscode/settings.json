@@ -6,7 +6,7 @@
     "Capotecnico",
     "cardano",
     "daniele",
-    "Docomodigital",
+    "DOCOMO",
     "Esaote",
     "Esentar",
     "iccicci",
@@ -20,11 +20,9 @@
     "Perito",
     "programmatore",
     "Ragazze",
-    "Reggello",
     "RERO",
     "ricci",
     "Supereva",
-    "sardoloop",
     "sbobba",
     "VITÆ",
     "Webservices"
@@ -43,5 +41,5 @@
   "files.trimFinalNewlines": true,
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
-  "typescript.tsdk": "./node_modules/typescript/lib"
+  "json.schemaDownload.enable": true
 }
